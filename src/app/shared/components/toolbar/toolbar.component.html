@@ -1,0 +1,17 @@
+<mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="cursor-pointer" (click)="goToHome()">
+        Fundación Matrix - Colombia
+    </span>
+    <span class="example-spacer"></span>
+    <button mat-stroked-button (click)="goToRegister()">
+      Registro
+      <mat-icon>person_add</mat-icon>
+    </button>
+    <button mat-flat-button (click)="goToLogin()" class="ml-2">
+      Login
+      <mat-icon>open_in_browser</mat-icon>
+    </button>
+</mat-toolbar>
