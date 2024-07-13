@@ -9,6 +9,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ReusableTableComponent } from './components/reusable-table/reusable-table.component';
+import { ColumnValuePipe } from './pipes/column-value.pipe';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     ToolbarComponent,
     AdminLayoutComponent,
     SidebarComponent,
-    HeaderComponent
+    HeaderComponent,
+    ColumnValuePipe,
+    ReusableTableComponent
   ],
   imports: [
     CommonModule,
