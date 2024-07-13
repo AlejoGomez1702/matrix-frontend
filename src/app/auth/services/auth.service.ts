@@ -10,7 +10,12 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  register( registerUserDto: any ) {
-    return this.http.post('http://localhost:3000/api/v1/auth/register', registerUserDto );
+  register() {
+    // TODO: Implement register method
   }
+
+  login(){
+    // TODO: Implement login method
+  }
+
 }

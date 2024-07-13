@@ -27,6 +27,7 @@
             <mat-form-field class="w-full">
                 <mat-label>Contraseña</mat-label>
                 <input type="password" matInput placeholder="Contraseña" formControlName="password">
+                <label class="text-green-500">Debe contener mayusculas, números y minímo 8 caracteres</label>
             </mat-form-field>
             <mat-form-field class="w-full">
                 <mat-label>Confirmar Contraseña</mat-label>
@@ -35,8 +36,7 @@
             <mat-form-field class="w-full">
                 <mat-label>País</mat-label>
                 <mat-select placeholder="Seleccione su país..." formControlName="country">
-                    <mat-option value="pais1">País 1</mat-option>
-                    <mat-option value="pais2">País 2</mat-option>
+                    <mat-option value="Colombia">Colombia</mat-option>
                     <!-- Agrega más opciones según sea necesario -->
                 </mat-select>
             </mat-form-field>
@@ -48,7 +48,7 @@
             
             <mat-form-field class="w-full">
                 <mat-label>Otro Tel. Celular</mat-label>
-                <input matInput placeholder="Ingrese otro teléfono celular..." formControlName="alternatePhoneNumber">
+                <input matInput placeholder="Ingrese otro teléfono celular..." formControlName="phoneNumber2">
             </mat-form-field>
             
             <mat-form-field class="w-full">

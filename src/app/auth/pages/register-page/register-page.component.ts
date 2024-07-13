@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { SweetAlertService } from '../../../shared/services/sweet-alert.service';
 
 @Component({
   selector: 'app-register-page',
@@ -10,37 +11,27 @@ import { AuthService } from '../../services/auth.service';
 export class RegisterPageComponent {
 
   public registerForm: FormGroup = this.fb.group({
-    fullName: ['', Validators.required], // Agregado
-    document: ['', Validators.required], // Agregado
+    fullName: ['', Validators.required],
+    document: ['', Validators.required], 
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
-    confirmPassword: ['', Validators.required], // Agregado
+    confirmPassword: ['', Validators.required], 
     country: ['', Validators.required],
     phoneNumber: ['', Validators.required],
-    alternatePhoneNumber: [''], // Opcional, no requerido
-    sponsor: [''],
+    phoneNumber2: [''], 
+    sponsor: ['', Validators.required],
     termsAndConditions: [false, Validators.requiredTrue],
     dataUsageConsent: [false, Validators.requiredTrue]
   });
 
   constructor(
     private authService: AuthService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private sweetAlert: SweetAlertService
   ) { }
 
   onSubmit() {
-
-    const { confirmPassword, ...data } = this.registerForm.value;
-
-    const registerUserDto = data;
-    this.authService.register(registerUserDto).subscribe(
-      response => {
-        console.log(response);
-      },
-      errorResponse => {
-        console.log(errorResponse);
-      }
-    );
+    // TODO: Implement onSubmit method
   }
 
 }
