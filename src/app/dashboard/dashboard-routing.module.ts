@@ -10,6 +10,7 @@ const routes: Routes = [
     children: [
       { path: '', component: MainContentPageComponent },
       { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
+      { path: 'sponsors', loadChildren: () => import('./sponsors/sponsors.module').then(m => m.SponsorsModule) },
       { path: '**', redirectTo: '' }
     ]
   },

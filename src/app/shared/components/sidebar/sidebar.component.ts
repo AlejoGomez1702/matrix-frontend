@@ -11,6 +11,7 @@ export class SidebarComponent {
   public menuItems = [
     { title: "Home", icon: "home", route: '/dashboard' },
     { title: "Usuarios", icon: "layers", route: '/dashboard/users' },
+    { title: "Sponsors", icon: "layers", route: '/dashboard/sponsors' },
     // { title: "Contratistas", icon: "people" },
     // { title: "Almacén", icon: "store", route: '/dashboard/warehouse' },
     // { title: "Reportes Almacén", icon: "assessment" },
