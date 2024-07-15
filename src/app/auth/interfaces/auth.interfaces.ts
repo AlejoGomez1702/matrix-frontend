@@ -4,5 +4,12 @@ export interface LoginDataDto{
 }
 
 export interface RegisterDataDto{
-    // TODO: Define RegisterDataDto interface
+  email: string;
+  password: string;
+  fullName: string;
+  document: string;
+  country: string;
+  phoneNumber: string;
+  phoneNumber2: string;
+  sponsor: string;
 }

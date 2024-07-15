@@ -1,15 +1,18 @@
 
 <div class="mt-8 text-center">
-  <button (click)="toggleVideoLinks()" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700">
-    Mostrar Videos
+  <button mat-raised-button color="warn" (click)="toggleVideoLinks()" class="flex items-center">
+    <mat-icon class="mr-2">play_arrow</mat-icon>
+    Videos
   </button>
 </div>
 
+
+
 <!-- Enlaces de videos -->
 <div *ngIf="showLinks" class="video-links text-center mt-4">
-  <a href="#" (click)="playVideo('dQw4w9WgXcQ')" [ngClass]="{'text-green-500': isVisited('dQw4w9WgXcQ'), 'text-blue-500': !isVisited('dQw4w9WgXcQ')}" class="block hover:underline mb-2">Video 1</a>
-  <a href="#" (click)="playVideo('3JZ_D3ELwOQ')" [ngClass]="{'text-green-500': isVisited('3JZ_D3ELwOQ'), 'text-blue-500': !isVisited('3JZ_D3ELwOQ')}" class="block hover:underline mb-2">Video 2</a>
-  <a href="#" (click)="playVideo('tVj0ZTS4WF4')" [ngClass]="{'text-green-500': isVisited('tVj0ZTS4WF4'), 'text-blue-500': !isVisited('tVj0ZTS4WF4')}" class="block hover:underline">Video 3</a>
+  <a href="#" (click)="playVideo($event, 'dQw4w9WgXcQ')" [ngClass]="{'text-green-500': isVisited('dQw4w9WgXcQ'), 'text-blue-500': !isVisited('dQw4w9WgXcQ')}" class="block hover:underline mb-2">Video 1</a>
+  <a href="#" (click)="playVideo($event, '3JZ_D3ELwOQ')" [ngClass]="{'text-green-500': isVisited('3JZ_D3ELwOQ'), 'text-blue-500': !isVisited('3JZ_D3ELwOQ')}" class="block hover:underline mb-2">Video 2</a>
+  <a href="#" (click)="playVideo($event, 'tVj0ZTS4WF4')" [ngClass]="{'text-green-500': isVisited('tVj0ZTS4WF4'), 'text-blue-500': !isVisited('tVj0ZTS4WF4')}" class="block hover:underline">Video 3</a>
 </div>
 
 <div *ngIf="videoId" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">

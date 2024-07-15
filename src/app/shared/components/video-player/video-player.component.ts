@@ -18,7 +18,8 @@ export class VideoPlayerComponent {
     this.showLinks = !this.showLinks;
   }
 
-  playVideo(videoId: string) {
+  playVideo(event: Event, videoId: string) {
+    event.preventDefault();
     this.videoId = videoId;
     this.showCloseButton = true;
     this.visitedVideos.add(videoId);
