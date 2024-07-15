@@ -36,6 +36,7 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
     ToolbarComponent,
     ReactiveFormsModule,
     AdminLayoutComponent,
+    ReusableTableComponent,
     VideoPlayerComponent
   ]
 })

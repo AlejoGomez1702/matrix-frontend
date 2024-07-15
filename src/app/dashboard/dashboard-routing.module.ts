@@ -9,6 +9,7 @@ const routes: Routes = [
     component: AdminLayoutComponent,
     children: [
       { path: '', component: MainContentPageComponent },
+      { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
       { path: '**', redirectTo: '' }
     ]
   },

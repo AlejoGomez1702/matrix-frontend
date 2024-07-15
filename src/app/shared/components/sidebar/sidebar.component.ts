@@ -9,8 +9,8 @@ export class SidebarComponent {
   public open: boolean = true;
 
   public menuItems = [
-    { title: "Home", icon: "home", route: '/super-dashboard' },
-    { title: "Direcciones", icon: "layers", route: '/super-dashboard/directions' },
+    { title: "Home", icon: "home", route: '/dashboard' },
+    { title: "Usuarios", icon: "layers", route: '/dashboard/users' },
     // { title: "Contratistas", icon: "people" },
     // { title: "Almacén", icon: "store", route: '/dashboard/warehouse' },
     // { title: "Reportes Almacén", icon: "assessment" },
