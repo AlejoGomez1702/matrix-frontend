@@ -1,0 +1,24 @@
+.fondo {
+  background: url('/assets/images/logo-fenix.jpeg') no-repeat center center;
+  background-size: contain;
+  height: 80vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.clock {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.clock div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

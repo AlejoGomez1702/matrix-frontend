@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ReusableTableComponent } from './components/reusable-table/reusable-table.component';
 import { ColumnValuePipe } from './pipes/column-value.pipe';
+import { VideoPlayerComponent } from './components/video-player/video-player.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ColumnValuePipe } from './pipes/column-value.pipe';
     SidebarComponent,
     HeaderComponent,
     ColumnValuePipe,
-    ReusableTableComponent
+    ReusableTableComponent,
+    VideoPlayerComponent
   ],
   imports: [
     CommonModule,
@@ -30,10 +32,11 @@ import { ColumnValuePipe } from './pipes/column-value.pipe';
     SweetAlert2Module.forRoot()
   ],
   exports: [
-    MaterialModule, 
-    ToolbarComponent, 
+    MaterialModule,
+    ToolbarComponent,
     ReactiveFormsModule,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    VideoPlayerComponent
   ]
 })
 export class SharedModule { }
