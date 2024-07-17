@@ -1,29 +1,7 @@
-
-<div class="mt-8 text-center">
-  <button mat-raised-button color="warn" (click)="toggleVideoLinks()" class="flex items-center">
-    <mat-icon class="mr-2">play_arrow</mat-icon>
-    Videos
+<!-- <div id="player"></div> -->
+<div class="video-container relative">
+  <div id="player"></div>
+  <button *ngIf="showCloseButton" (click)="closeVideo()" class="close-button absolute top-2 right-2 text-white p-2 rounded-full text-xl">
+    &times;
   </button>
-</div>
-
-
-
-<!-- Enlaces de videos -->
-<div *ngIf="showLinks" class="video-links text-center mt-4">
-  <a href="#" (click)="playVideo($event, 'dQw4w9WgXcQ')" [ngClass]="{'text-green-500': isVisited('dQw4w9WgXcQ'), 'text-blue-500': !isVisited('dQw4w9WgXcQ')}" class="block hover:underline mb-2">Video 1</a>
-  <a href="#" (click)="playVideo($event, '3JZ_D3ELwOQ')" [ngClass]="{'text-green-500': isVisited('3JZ_D3ELwOQ'), 'text-blue-500': !isVisited('3JZ_D3ELwOQ')}" class="block hover:underline mb-2">Video 2</a>
-  <a href="#" (click)="playVideo($event, 'tVj0ZTS4WF4')" [ngClass]="{'text-green-500': isVisited('tVj0ZTS4WF4'), 'text-blue-500': !isVisited('tVj0ZTS4WF4')}" class="block hover:underline">Video 3</a>
-</div>
-
-<div *ngIf="videoId" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
-  <div class="bg-white p-4 rounded-lg shadow-lg relative flex flex-col items-center justify-center">
-    <div class="relative w-full h-full flex items-center justify-center">
-      <button *ngIf="showCloseButton" (click)="closeVideo()" class=" text-gray-600 hover:text-gray-900 text-2xl">
-        &times;
-      </button>
-    </div>
-    <div id="youtubeVideoContainer">
-      <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + videoId)" width="560" height="315" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </div>
 </div>

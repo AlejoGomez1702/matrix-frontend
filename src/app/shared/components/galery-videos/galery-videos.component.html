@@ -1,0 +1,11 @@
+<div class="mt-8 text-center">
+  <button
+    *ngFor="let video of videos"
+    (click)="openVideo(video.id)"
+    class="mx-2 my-2 px-4 py-2 rounded-md text-white"
+    [ngClass]="{'bg-blue-500': !isVisited(video.id), 'bg-green-500': isVisited(video.id)}"
+  >
+    {{ video.label }}
+  </button>
+</div>
+
