@@ -12,6 +12,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ReusableTableComponent } from './components/reusable-table/reusable-table.component';
 import { ColumnValuePipe } from './pipes/column-value.pipe';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
+import { VideosPlayerComponent } from './components/videos-player/videos-player.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
     HeaderComponent,
     ColumnValuePipe,
     ReusableTableComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    VideosPlayerComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +39,8 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
     ReactiveFormsModule,
     AdminLayoutComponent,
     ReusableTableComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    VideosPlayerComponent
   ]
 })
 export class SharedModule { }

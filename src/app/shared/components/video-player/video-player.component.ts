@@ -1,40 +1,54 @@
-import { Component } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, AfterViewInit, OnDestroy, Input } from '@angular/core';
+
+declare global {
+  interface Window {
+    YT: any;
+    onYouTubePlayerAPIReady: () => void;
+  }
+}
 
 @Component({
   selector: 'app-video-player',
   templateUrl: './video-player.component.html',
-  styleUrl: './video-player.component.scss'
+  styleUrls: ['./video-player.component.scss']
 })
-export class VideoPlayerComponent {
-  showLinks = false;
-  videoId: string | null = null;
-  showCloseButton = false;
-  visitedVideos: Set<string> = new Set<string>();
+export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
+  @Input() videoId!: string;
+  player: any;
 
-  constructor(public sanitizer: DomSanitizer) {}
+  ngAfterViewInit() {
+    // Definir la función global en el objeto window
+    window.onYouTubePlayerAPIReady = () => {
+      this.player = new window.YT.Player('player', {
+        height: '390',
+        width: '440',
+        videoId: this.videoId,
+        events: {
+          'onReady': this.onPlayerReady,
+          'onStateChange': this.onPlayerStateChange
+        }
+      });
+    };
 
-  toggleVideoLinks() {
-    this.showLinks = !this.showLinks;
+    // Verificar si la API de YouTube ya está cargada
+    if (window.YT && window.YT.Player) {
+      window.onYouTubePlayerAPIReady();
+    }
   }
 
-  playVideo(event: Event, videoId: string) {
-    event.preventDefault();
-    this.videoId = videoId;
-    this.showCloseButton = true;
-    this.visitedVideos.add(videoId);
-    // setTimeout(() => {
-    //   this.showCloseButton = true;
-    // }, 30000); // 30 segundos
+  onPlayerReady(event: any) {
+    event.target.playVideo();
   }
 
-  closeVideo() {
-    this.videoId = null;
-    this.showCloseButton = false;
+  onPlayerStateChange(event: any) {
+    if (event.data === window.YT.PlayerState.ENDED) {
+      alert('done');
+    }
   }
 
-  isVisited(videoId: string): boolean {
-    return this.visitedVideos.has(videoId);
+  ngOnDestroy() {
+    if (this.player) {
+      this.player.destroy();
+    }
   }
-
 }
