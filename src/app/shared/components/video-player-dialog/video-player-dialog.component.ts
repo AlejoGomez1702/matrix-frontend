@@ -5,10 +5,10 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
   template: `
     <h1 mat-dialog-title>Reproductor de video</h1>
     <div mat-dialog-content>
-      <app-video-player [videoId]="data.videoId"></app-video-player>
+      <app-video-player [videoId]="data.videoId" (videoEnded)="onVideoEnded()"></app-video-player>
     </div>
     <!-- <div mat-dialog-actions>
-      <button mat-button (click)="onCloseClick()">Cerrar</button>
+      <button mat-button (click)="onCloseClick()" >Cerrar</button>
     </div> -->
   `,
 })
@@ -19,6 +19,9 @@ export class VideoPlayerDialogComponent {
   ) {}
 
   onCloseClick(): void {
+    this.dialogRef.close();
+  }
+  onVideoEnded(): void {
     this.dialogRef.close();
   }
 }

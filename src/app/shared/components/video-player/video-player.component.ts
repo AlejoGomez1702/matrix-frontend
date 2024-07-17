@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy, Input } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, Input, EventEmitter, Output } from '@angular/core';
 
 declare global {
   interface Window {
@@ -14,6 +14,7 @@ declare global {
 })
 export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
   @Input() videoId!: string;
+  @Output() videoEnded = new EventEmitter<void>();
   player: any;
   showCloseButton = false;
 
@@ -48,6 +49,7 @@ export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
   }
 
   closeVideo() {
+    this.videoEnded.emit();
     this.player.destroy();
     this.showCloseButton = false;
   }
