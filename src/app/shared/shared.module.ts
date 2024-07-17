@@ -13,6 +13,8 @@ import { ReusableTableComponent } from './components/reusable-table/reusable-tab
 import { ColumnValuePipe } from './pipes/column-value.pipe';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
 import { VideosPlayerComponent } from './components/videos-player/videos-player.component';
+import { GaleryVideosComponent } from './components/galery-videos/galery-videos.component';
+import { VideoPlayerDialogComponent } from './components/video-player-dialog/video-player-dialog.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { VideosPlayerComponent } from './components/videos-player/videos-player.
     ColumnValuePipe,
     ReusableTableComponent,
     VideoPlayerComponent,
-    VideosPlayerComponent
+    VideosPlayerComponent,
+    GaleryVideosComponent,
+    VideoPlayerDialogComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +44,8 @@ import { VideosPlayerComponent } from './components/videos-player/videos-player.
     AdminLayoutComponent,
     ReusableTableComponent,
     VideoPlayerComponent,
-    VideosPlayerComponent
+    VideosPlayerComponent,
+    GaleryVideosComponent
   ]
 })
 export class SharedModule { }

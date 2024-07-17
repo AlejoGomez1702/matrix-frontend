@@ -14,6 +14,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   exports: [
@@ -30,7 +31,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatTableModule,
     MatCheckboxModule,
     MatExpansionModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDialogModule,
   ]
 })
 export class MaterialModule { }

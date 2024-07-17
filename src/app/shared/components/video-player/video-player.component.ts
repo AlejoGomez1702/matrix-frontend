@@ -22,7 +22,7 @@ export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
     window.onYouTubePlayerAPIReady = () => {
       this.player = new window.YT.Player('player', {
         height: '390',
-        width: '640',
+        width: '500',
         videoId: this.videoId,
         events: {
           'onReady': this.onPlayerReady,
