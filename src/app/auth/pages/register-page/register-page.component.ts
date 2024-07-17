@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { SweetAlertService } from '../../../shared/services/sweet-alert.service';
 import { RegisterDataDto } from '../../interfaces/auth.interfaces';
+import { VideoPlayerDialogComponent } from '../../../shared/components/video-player-dialog/video-player-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register-page',
@@ -30,7 +32,8 @@ export class RegisterPageComponent {
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
-    private sweetAlert: SweetAlertService
+    private sweetAlert: SweetAlertService,
+    public dialog: MatDialog
   ) { }
 
   onSubmit() {
@@ -59,11 +62,20 @@ export class RegisterPageComponent {
       };
       this.authService.register(registerData).subscribe(
         response => {
-          this.sweetAlert.presentSuccess("Registro exitoso.");
-          this.showVideos = true;
+          // this.showVideos = true;
+          const dialogRef = this.dialog.open(VideoPlayerDialogComponent, {
+            width: '80%',
+            disableClose: true,
+            data: { videoId: '0Bmhjf0rKe8' }
+            });
+
+            dialogRef.afterClosed().subscribe(() => {
+              this.sweetAlert.presentSuccess("Registro exitoso.");
+              console.log('El modal del video ha sido cerrado');
+          });
         },
         error => {
-          this.sweetAlert.presentError("No se pudó registrar, vuelva a interntarlo.");
+          this.sweetAlert.presentError("No se pudó registrar, vuelva a intentarlo.");
           this.showVideos = false;
         }
       );
