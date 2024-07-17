@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { LoginResponseDto } from '../../interfaces/auth.interfaces';
+import { SweetAlertService } from '../../../shared/services/sweet-alert.service';
 
 @Component({
   selector: 'app-login-page',
@@ -20,7 +22,7 @@ export class LoginPageComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    // private sweetAlert: SweetAlertService,
+    private sweetAlert: SweetAlertService,
     private authService: AuthService
   )
   {}
@@ -29,51 +31,28 @@ export class LoginPageComponent {
     // this.checkToken();
   }
 
-  private checkDashboardToRedirect(){
+  private checkDashboardToRedirect( data: LoginResponseDto ){
     
-    // this.authService.setToken( data.token );
-    // const { roles = [] } = data;
-    // const isSuperAdmin = roles.includes('ceo') || roles.includes('generalDirector') || roles.includes('director');
+    this.authService.setToken( data.token );
+    const { roles = [] } = data;
+    const isAdmin = roles.includes('admin');
 
-    // if( isSuperAdmin )
-    //   return this.router.navigate(['/super-dashboard']);
+    if( isAdmin )
+      return this.router.navigate(['/dashboard']);
 
-    return this.router.navigate(['/dashboard']);
+    return this.sweetAlert.presentError('No tienes permisos para acceder al dashboard');
   }
-
-  // private refreshToken( checkTokenResponse: CheckTokenResponse ) {
-  //   const { token = '' } = checkTokenResponse;
-  //   if(!token) return;
-
-  //   this.authService.setToken( token );
-  // }
 
   login(){
-    this.checkDashboardToRedirect();
-    // this.authService.login( this.loginForm.value ).subscribe(
-    //   response => {
-    //     this.checkDashboardToRedirect();
-    //   },
-    //   errorResponse => {
-    //     const errorDetail = errorResponse.error?.message || 'Error';
-    //     console.log( errorDetail );
-    //     // this.sweetAlert.presentError( errorDetail );
-    //   }
-    // );
+    this.authService.login( this.loginForm.value ).subscribe(
+      response => {
+        this.checkDashboardToRedirect( response );
+      },
+      errorResponse => {
+        const errorDetail = errorResponse.error?.message || 'Error';
+        this.sweetAlert.presentError( errorDetail );
+      }
+    );
   }
-
-  // checkToken(){
-  //   if( !this.authService.getToken() ) return; 
-
-  //   this.authService.checkToken().subscribe(
-  //     response => {
-  //       this.refreshToken( response );
-  //       this.checkDashboardToRedirect( response );
-  //     },
-  //     () => {
-  //       localStorage.clear();
-  //     }
-  //   );
-  // }
 
 }

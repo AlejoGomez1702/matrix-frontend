@@ -34,10 +34,11 @@ export class ListAllUsersPageComponent implements OnInit {
 
   setTableColumns() {
     this.tableColumns = [
+      { label: 'Documento', def: 'document', dataKey: 'document' },
       { label: 'Fecha de Registro', def: 'createdAt', dataKey: 'createdAt', dataType: 'date', formatt: 'dd/MM/yyyy' },
       { label: 'Nombre Completo', def: 'fullName', dataKey: 'fullName' },
       { label: 'Teléfono', def: 'phoneNumber', dataKey: 'phoneNumber' },
-      { label: 'Patrocinador', def: 'sponsor', dataKey: 'sponsor' },
+      { label: 'Sponsor', def: 'sponsor', dataKey: 'sponsor' },
       { label: 'Estado', def: 'state', dataKey: 'state' }
     ];
   }

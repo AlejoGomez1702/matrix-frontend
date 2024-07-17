@@ -3,6 +3,13 @@ export interface LoginDataDto{
     password: string;
 }
 
+export interface LoginResponseDto{
+  id: string;
+  email: string;
+  token: string;
+  roles: string[];
+}
+
 export interface RegisterDataDto{
   email: string;
   password: string;
