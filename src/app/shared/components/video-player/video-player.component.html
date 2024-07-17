@@ -1,5 +1,7 @@
-
-
-<div id="player"></div>
-
-
+<!-- <div id="player"></div> -->
+<div class="video-container relative">
+  <div id="player"></div>
+  <button *ngIf="showCloseButton" (click)="closeVideo()" class="close-button absolute top-2 right-2 text-white p-2 rounded-full text-xl">
+    &times;
+  </button>
+</div>

@@ -15,17 +15,18 @@ declare global {
 export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
   @Input() videoId!: string;
   player: any;
+  showCloseButton = false;
 
   ngAfterViewInit() {
     // Definir la función global en el objeto window
     window.onYouTubePlayerAPIReady = () => {
       this.player = new window.YT.Player('player', {
         height: '390',
-        width: '440',
+        width: '640',
         videoId: this.videoId,
         events: {
           'onReady': this.onPlayerReady,
-          'onStateChange': this.onPlayerStateChange
+          'onStateChange': this.onPlayerStateChange.bind(this)
         }
       });
     };
@@ -42,8 +43,13 @@ export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
 
   onPlayerStateChange(event: any) {
     if (event.data === window.YT.PlayerState.ENDED) {
-      alert('done');
+      this.showCloseButton = true;
     }
+  }
+
+  closeVideo() {
+    this.player.destroy();
+    this.showCloseButton = false;
   }
 
   ngOnDestroy() {
