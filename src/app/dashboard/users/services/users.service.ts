@@ -17,4 +17,9 @@ export class UsersService {
     return this.http.get<ResponseGetAllUsers>(`${environment.apiUrl}/users`);
   }
 
+  getRegistersTotal( state: string ): Observable<number>
+  {
+    return this.http.get<number>(`${environment.apiUrl}/users/total?state=${state}`);
+  }
+
 }

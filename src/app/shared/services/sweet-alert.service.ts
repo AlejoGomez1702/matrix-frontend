@@ -8,12 +8,13 @@ export class SweetAlertService {
 
   constructor() { }
 
-  presentSuccess(message: string) {
+  presentSuccess(message: string, text?: string) {
     Swal.fire({
       icon: 'success',
       title: message,
+      text,
       showConfirmButton: false,
-      timer: 1500
+      timer: 2500
     });
   }
 

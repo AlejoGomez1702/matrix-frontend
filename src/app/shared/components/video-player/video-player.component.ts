@@ -1,4 +1,5 @@
 import { Component, AfterViewInit, OnDestroy, Input, EventEmitter, Output } from '@angular/core';
+import { SweetAlertService } from '../../services/sweet-alert.service';
 
 declare global {
   interface Window {
@@ -17,6 +18,10 @@ export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
   @Output() videoEnded = new EventEmitter<void>();
   player: any;
   showCloseButton = false;
+
+  constructor(
+    private sweetAlert: SweetAlertService
+  ) {}
 
   ngAfterViewInit() {
     // Definir la función global en el objeto window
@@ -44,7 +49,8 @@ export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
 
   onPlayerStateChange(event: any) {
     if (event.data === window.YT.PlayerState.ENDED) {
-      this.showCloseButton = true;
+      this.sweetAlert.presentSuccess('Misión Cumplida!');
+      this.closeVideo();
     }
   }
 

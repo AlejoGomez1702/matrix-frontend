@@ -103,7 +103,12 @@
       </mat-card-content>
 
       <mat-card-actions>
-        <button mat-flat-button color="primary" (click)="onSubmit()">Registrarse</button>
+        <button mat-flat-button 
+                color="primary" 
+                (click)="onSubmit()"
+                [disabled]="registerForm.invalid">
+          Registrarse
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>

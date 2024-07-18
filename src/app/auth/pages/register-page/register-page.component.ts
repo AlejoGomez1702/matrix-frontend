@@ -5,6 +5,7 @@ import { SweetAlertService } from '../../../shared/services/sweet-alert.service'
 import { RegisterDataDto } from '../../interfaces/auth.interfaces';
 import { VideoPlayerDialogComponent } from '../../../shared/components/video-player-dialog/video-player-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-page',
@@ -33,13 +34,16 @@ export class RegisterPageComponent {
     private authService: AuthService,
     private fb: FormBuilder,
     private sweetAlert: SweetAlertService,
-    public dialog: MatDialog
+    private roter: Router,
+    public dialog: MatDialog, 
   ) { }
 
   onSubmit() {
 
     if (this.registerForm.valid && this.passwordsMatch())
     {
+      this.sweetAlert.presentSuccess('Para terminar el registro, por favor vea el siguiente video.');
+
       const {
         fullName,
         email,
@@ -70,8 +74,8 @@ export class RegisterPageComponent {
             });
 
             dialogRef.afterClosed().subscribe(() => {
-              this.sweetAlert.presentSuccess("Registro exitoso.");
-              console.log('El modal del video ha sido cerrado');
+              this.sweetAlert.presentSuccess("Registro exitoso.", "Continua viendo mas videos para mayores beneficios!");
+              this.roter.navigate(['/']);
           });
         },
         error => {
