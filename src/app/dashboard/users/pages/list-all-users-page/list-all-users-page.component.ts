@@ -41,7 +41,7 @@ export class ListAllUsersPageComponent implements OnInit {
       { label: 'Nombre Completo', def: 'fullName', dataKey: 'fullName' },
       { label: 'Teléfono', def: 'phoneNumber', dataKey: 'phoneNumber' },
       { label: 'Sponsor', def: 'sponsor', dataKey: 'sponsor' },
-      { label: 'Estado', def: 'state', dataKey: 'state' }
+      { label: 'Estado', def: 'state', dataKey: 'state.name', dataType: 'object' },
     ];
   }
 

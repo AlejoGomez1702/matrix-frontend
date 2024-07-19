@@ -8,23 +8,38 @@ import { DatePipe } from '@angular/common';
 export class ColumnValuePipe implements PipeTransform {
 
   transform(row: any, column: TableColumn): unknown {
-    let displayvalue = row[column.dataKey];
+    let displayValue = row[column.dataKey];
 
     switch (column.dataType)
     {
       case 'date':
         if(column.formatt !== undefined ) {
-          displayvalue = new DatePipe('en').transform(displayvalue, column.formatt);
+          displayValue = new DatePipe('en').transform(displayValue, column.formatt);
         }
 
-        break;
+      break;
 
-        default:
-          break;
+      case 'object':
+        const arrayKeys = column.dataKey.split('.');
+        let currentValue: any;
+
+        arrayKeys.forEach((key) => {
+          if (currentValue === undefined) {
+            currentValue = row[key];
+            return;
+          }
+          currentValue = currentValue[key];
+        });
+
+        displayValue = currentValue;
+      break;
+
+      default:
+      break;
     }
 
 
-    return displayvalue;
+    return displayValue;
   }
 
 }

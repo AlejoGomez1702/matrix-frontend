@@ -3,5 +3,5 @@ export interface TableColumn {
   def: string;
   dataKey: string;
   formatt?: string;
-  dataType?: 'date'
+  dataType?: 'date' | 'object';
 }
