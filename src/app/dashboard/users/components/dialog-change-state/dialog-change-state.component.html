@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Modificar Estado</h2>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName="stateId">
+          <ng-container *ngFor="let state of states">
+            <mat-option [value]="state.id">
+                {{ state.name }}
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-raised-button (click)="changeState()" cdkFocusInitial>Guardar</button>
+</mat-dialog-actions>

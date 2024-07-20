@@ -13,9 +13,28 @@ export interface User {
     phoneNumber:  string;
     phoneNumber2?: string;
     sponsor:      string;
-    state:        string;
+    state:        State;
     isActive:     boolean;
     roles:        string[];
     createdAt:    Date;
     updatedAt:    Date;
+}
+
+export interface ResponseGetAllStates {
+    results: State[];
+    total:   number;
+}
+
+export interface State {
+    id:        number;
+    name:      string;
+    createdAt: Date;
+    updatedAt: Date;
+    deletedAt: Date;
+}
+
+
+export interface OnEditData {
+    userId:   number;
+    stateId:  number;
 }

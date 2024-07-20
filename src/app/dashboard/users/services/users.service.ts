@@ -22,4 +22,9 @@ export class UsersService {
     return this.http.get<number>(`${environment.apiUrl}/users/total?state=${state}`);
   }
 
+  changeUserState( userId: number, stateId: number )
+  {
+    return this.http.put(`${environment.apiUrl}/users/change-state/${userId}`, { stateId });
+  }
+
 }
