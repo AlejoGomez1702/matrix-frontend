@@ -22,3 +22,15 @@
   flex-direction: column;
   align-items: center;
 }
+
+
+.digital-clock {
+  font-family: 'Digital-7', sans-serif;
+  letter-spacing: 0.1em; /* Ajusta el espacio entre letras para una apariencia más digital */
+  color: #ffdb50;// cyan; /* Ajusta el color según sea necesario */
+  background-color: black; /* Fondo negro para un contraste digital */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px #8f8e69, 0 0 20px #fcffbd, 0 0 30px #dcdc9e, 0 0 40px #797d67;
+}
+

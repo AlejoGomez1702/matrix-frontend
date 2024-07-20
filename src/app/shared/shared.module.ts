@@ -14,6 +14,7 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
 import { VideosPlayerComponent } from './components/videos-player/videos-player.component';
 import { GaleryVideosComponent } from './components/galery-videos/galery-videos.component';
 import { VideoPlayerDialogComponent } from './components/video-player-dialog/video-player-dialog.component';
+import { CompleteZerosDirective } from './directives/complete-zeros.directive';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { VideoPlayerDialogComponent } from './components/video-player-dialog/vid
     VideoPlayerComponent,
     VideosPlayerComponent,
     GaleryVideosComponent,
-    VideoPlayerDialogComponent
+    VideoPlayerDialogComponent,
+    CompleteZerosDirective
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { VideoPlayerDialogComponent } from './components/video-player-dialog/vid
     ReusableTableComponent,
     VideoPlayerComponent,
     VideosPlayerComponent,
-    GaleryVideosComponent
+    GaleryVideosComponent,
+    CompleteZerosDirective
   ]
 })
 export class SharedModule { }
