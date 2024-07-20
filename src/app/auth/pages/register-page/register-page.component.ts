@@ -23,7 +23,7 @@ export class RegisterPageComponent {
     country: ['', Validators.required],
     phoneNumber: ['', Validators.required],
     phoneNumber2: [''],
-    sponsor: ['', Validators.required],
+    sponsor: [''],
     termsAndConditions: [false, Validators.requiredTrue],
     dataUsageConsent: [false, Validators.requiredTrue]
   });

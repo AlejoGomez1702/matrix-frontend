@@ -8,6 +8,7 @@ import { SweetAlertService } from '../../../../shared/services/sweet-alert.servi
 import { TableAction } from '../../../../shared/interfaces/table-action';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogChangeStateComponent } from '../../components/dialog-change-state/dialog-change-state.component';
+import { Router } from '@angular/router';
 // import { TABLE_ACTION } from '../../../../shared/enums/table-action.enum';
 
 @Component({
@@ -22,7 +23,7 @@ export class ListAllUsersPageComponent implements OnInit {
   tableConfig: TableConfig = {
     isPaginable: true,
     showActions: true,    
-    actions: [TABLE_ACTION.EDIT],
+    actions: [TABLE_ACTION.SHOW, TABLE_ACTION.EDIT],
     showFilter: true,
     // showExcelButton: true
   }
@@ -30,7 +31,8 @@ export class ListAllUsersPageComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     private sweetAlert: SweetAlertService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +46,7 @@ export class ListAllUsersPageComponent implements OnInit {
       { label: 'Fecha de Registro', def: 'createdAt', dataKey: 'createdAt', dataType: 'date', formatt: 'dd/MM/yyyy' },
       { label: 'Nombre Completo', def: 'fullName', dataKey: 'fullName' },
       { label: 'Teléfono', def: 'phoneNumber', dataKey: 'phoneNumber' },
-      { label: 'Sponsor', def: 'sponsor', dataKey: 'sponsor' },
+      { label: 'Sponsor', def: 'sponsor', dataKey: 'sponsor.document', dataType: 'object' },
       { label: 'Estado', def: 'state', dataKey: 'state.name', dataType: 'object' },
     ];
   }
@@ -54,6 +56,7 @@ export class ListAllUsersPageComponent implements OnInit {
     this.usersService.getAllUsers().subscribe(
       response => {
         this.usersList = response.results;
+        console.log(response);
       },
       errorResponse => {
         this.sweetAlert.presentError('Error al cargar los usuarios');
@@ -63,13 +66,22 @@ export class ListAllUsersPageComponent implements OnInit {
 
   onTableAction(tableAction: TableAction) {
     switch (tableAction.action) {
+
+      case TABLE_ACTION.SHOW:
+        this.onShow(tableAction.row);
+      break;
+
       case TABLE_ACTION.EDIT:
         this.onEdit(tableAction.row);
-        break;
+      break;
 
       default:
         break;
     }
+  }
+
+  onShow(user: User) {
+    this.router.navigate(['/dashboard/users', user.id]);
   }
 
   onEdit(user: User) {

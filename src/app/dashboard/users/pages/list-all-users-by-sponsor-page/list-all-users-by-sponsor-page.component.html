@@ -1,0 +1,15 @@
+<div class="bg-black">
+
+    <div class="text-center">
+        <h2 class="text-white">
+            Sponsor:
+            <h3>{{ sponsorName }}</h3>            
+        </h2>
+    </div>
+
+    <app-reusable-table [data]="usersList" 
+                        [columns]="tableColumns"
+                        [config]="tableConfig"
+                        (action)="onTableAction($event)">
+    </app-reusable-table>
+</div>

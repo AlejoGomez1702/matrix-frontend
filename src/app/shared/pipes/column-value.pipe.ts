@@ -25,9 +25,11 @@ export class ColumnValuePipe implements PipeTransform {
 
         arrayKeys.forEach((key) => {
           if (currentValue === undefined) {
-            currentValue = row[key];
+            if( row[key] )
+              currentValue = row[key];
             return;
           }
+
           currentValue = currentValue[key];
         });
 
