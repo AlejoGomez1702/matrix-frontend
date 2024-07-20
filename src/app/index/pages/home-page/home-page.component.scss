@@ -34,3 +34,41 @@
   box-shadow: inset 0 0 5px #8f8e69, 0 0 20px #fcffbd, 0 0 30px #dcdc9e, 0 0 40px #797d67;
 }
 
+
+//////////////////////////////////////////////////////PRIMERA ANIMACION////////////////////////////////////////////////
+@keyframes changeNumber {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+}
+
+.digital-clock {
+  display: inline-block;
+  animation: changeNumber 4s ease-in-out infinite;
+}
+//////////////////////////////////////////////////////PRIMERA ANIMACION//////////////////////////////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////////////////////SEGUNDA ANIMACION//////////////////////////////////////////////////////////////////////////
+// @keyframes slowFlip {
+//   0% {
+//     transform: rotateX(0deg);
+//   }
+//   100% {
+//     transform: rotateX(100deg);
+//   }
+// }
+// .digital-clock {
+//   display: inline-block;
+//   animation: slowFlip 5s linear infinite; /* Duración de 5 segundos para una animación más lenta */
+// }
+///////////////////////////////////////////////////////SEGUNDA ANIMACION///////////////////////////////////////////////////////////////////////
