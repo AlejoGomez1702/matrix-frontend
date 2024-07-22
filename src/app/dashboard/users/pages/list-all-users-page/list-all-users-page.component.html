@@ -1,4 +1,18 @@
 <div class="bg-black">
+    <div class="md:w-1/2 pl-10 pt-4">
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Buscar por Estado</mat-label>
+            <mat-select value="-1">
+                <mat-option value="-1">
+                    Todos
+                </mat-option>
+                <mat-option *ngFor="let state of states" [value]="state.id">
+                    {{ state.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    
     <app-reusable-table [data]="usersList" 
                         [columns]="tableColumns"
                         [config]="tableConfig"

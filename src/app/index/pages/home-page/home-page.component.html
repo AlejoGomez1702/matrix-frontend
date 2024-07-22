@@ -1,19 +1,21 @@
 <app-toolbar></app-toolbar>
 
-<div class="fondo flex justify-center items-center h-screen bg-gray-100">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <div class="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800 transition-transform transform hover:scale-105">
+<div class="fondo flex justify-between h-screen bg-gray-100">
+  <!-- Cambiado de grid a flex y ajustado para justificar contenido entre -->
+  <div class="flex justify-between w-full p-6 h-60">
+
+    <div class="flex flex-col items-center bg-white rounded-lg shadow-lg dark:bg-gray-800 transition-transform transform hover:scale-105">
       <div class="flex items-center mb-4">
-        <p class="text-2xl font-bold text-gray-700 dark:text-gray-400">
+        <p class="text-2xl font-bold text-gray-700 dark:text-gray-400 p-5">
           <mat-icon class="text-gray-700 dark:text-gray-300 mr-2">group</mat-icon>
           Patrocinados
         </p>
       </div>
       <p class="digital-clock text-4xl font-bold text-center bg-black text-yellow-500 p-2 rounded" [appCompleteZeros]="totalPatrociners"></p>
     </div>
-    <div class="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800 transition-transform transform hover:scale-105">
+    <div class="flex flex-col items-center bg-white rounded-lg shadow-lg dark:bg-gray-800 transition-transform transform hover:scale-105">
       <div class="flex items-center mb-4">
-        <p class="text-2xl font-bold text-gray-700 dark:text-gray-400">
+        <p class="text-2xl font-bold text-gray-700 dark:text-gray-400 p-5">
           <mat-icon class="text-gray-700 dark:text-gray-300 mr-2">group</mat-icon>
           Registrados
         </p>

@@ -29,7 +29,10 @@ export class DialogChangeStateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+    this.loadStates();    
+  }
+
+  loadStates() {
     this.statesService.getAllStates().subscribe(
       response => {
         this.states = response.results;

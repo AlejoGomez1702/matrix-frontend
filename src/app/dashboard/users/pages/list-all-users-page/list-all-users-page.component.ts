@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../interfaces/users.module.interfaces';
+import { State, User } from '../../interfaces/users.module.interfaces';
 import { TableColumn } from '../../../../shared/interfaces/table-column';
 import { TableConfig } from '../../../../shared/interfaces/table-config';
 import { UsersService } from '../../services/users.service';
@@ -9,6 +9,7 @@ import { TableAction } from '../../../../shared/interfaces/table-action';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogChangeStateComponent } from '../../components/dialog-change-state/dialog-change-state.component';
 import { Router } from '@angular/router';
+import { StatesService } from '../../services/states.service';
 // import { TABLE_ACTION } from '../../../../shared/enums/table-action.enum';
 
 @Component({
@@ -28,8 +29,11 @@ export class ListAllUsersPageComponent implements OnInit {
     // showExcelButton: true
   }
 
+  public states: State[] = [];
+
   constructor(
     private usersService: UsersService,
+    private statesService: StatesService,
     private sweetAlert: SweetAlertService,
     private dialog: MatDialog,
     private router: Router
@@ -37,7 +41,8 @@ export class ListAllUsersPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.setTableColumns();
-    this.loadData();
+    this.loadUsers();
+    this.loadStates();
   }
 
   setTableColumns() {
@@ -51,7 +56,7 @@ export class ListAllUsersPageComponent implements OnInit {
     ];
   }
 
-  loadData(){
+  loadUsers(){
 
     this.usersService.getAllUsers().subscribe(
       response => {
@@ -60,6 +65,17 @@ export class ListAllUsersPageComponent implements OnInit {
       },
       errorResponse => {
         this.sweetAlert.presentError('Error al cargar los usuarios');
+      }
+    );
+  }
+
+  loadStates() {
+    this.statesService.getAllStates().subscribe(
+      response => {
+        this.states = response.results;
+      },
+      errorResponse => {
+        console.log(errorResponse);
       }
     );
   }
@@ -97,7 +113,7 @@ export class ListAllUsersPageComponent implements OnInit {
       result => {
         if (result) {
           this.sweetAlert.presentSuccess('Estado actualizado correctamente');
-          this.loadData();
+          this.loadUsers();
         }
       }
     );

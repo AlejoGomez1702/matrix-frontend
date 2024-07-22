@@ -16,7 +16,7 @@ export class CompleteZerosDirective implements OnChanges{
   }
 
   private padZeros(num: number): string {
-    return num.toString().padStart(6, '0');
+    return num.toString().padStart(8, '0');
   }
 
 }
