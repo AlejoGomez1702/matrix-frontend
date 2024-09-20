@@ -18,8 +18,6 @@ export class RegisterPageComponent {
     fullName: ['', Validators.required],
     document: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
-    confirmPassword: ['', Validators.required],
     country: ['', Validators.required],
     phoneNumber: ['', Validators.required],
     phoneNumber2: [''],
@@ -35,7 +33,7 @@ export class RegisterPageComponent {
     private fb: FormBuilder,
     private sweetAlert: SweetAlertService,
     private roter: Router,
-    public dialog: MatDialog, 
+    public dialog: MatDialog,
   ) { }
 
   onSubmit() {
@@ -47,7 +45,6 @@ export class RegisterPageComponent {
       const {
         fullName,
         email,
-        password,
         document,
         country,
         phoneNumber,
@@ -57,7 +54,7 @@ export class RegisterPageComponent {
       const registerData: RegisterDataDto = {
         fullName,
         email,
-        password,
+        password : document,
         document,
         country,
         phoneNumber,
