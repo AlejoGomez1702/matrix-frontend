@@ -21,7 +21,7 @@ export class RegisterPageComponent {
     country: ['', Validators.required],
     phoneNumber: ['', Validators.required],
     phoneNumber2: [''],
-    sponsor: [''],
+    sponsor: ['755076487',Validators.required],
     termsAndConditions: [false, Validators.requiredTrue],
     dataUsageConsent: [false, Validators.requiredTrue]
   });
